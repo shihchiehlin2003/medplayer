@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace medplayer
 {
@@ -24,6 +25,8 @@ namespace medplayer
         {
             InitializeComponent();
         }
+
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -55,7 +58,64 @@ namespace medplayer
 
         private void btnplay_Click(object sender, RoutedEventArgs e)
         {
-            
+            // 設定影音播放狀態為「Play」，將狀態設定到目前的讀取行為
+            medshow.LoadedBehavior = MediaState.Play;
+        }
+
+        private void btnpause_Click(object sender, RoutedEventArgs e)
+        {
+            // 設定影音播放狀態為「Pause」，將狀態設定到目前的讀取行為
+            medshow.LoadedBehavior = MediaState.Pause;
+        }
+
+        private void btnstop_Click(object sender, RoutedEventArgs e)
+        {
+            // 設定影音播放狀態為「Stop」，將狀態設定到目前的讀取行為
+            medshow.LoadedBehavior = MediaState.Stop;
+        }
+
+        private void btnexit_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0); // 關閉整個程式的指令
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            medshow.Volume = sliVolume.Value; // 設定聲音大小
+                                              //txtFilePath.Text = MedShow.Volume.ToString();
+        }
+
+        TimeSpan TimePosition; // 宣告一個時間間格
+        DispatcherTimer timer = null; // 宣告一個「空的」計時器
+        private void medshow_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            // 取得所開啟的影片時間長度
+            TimePosition = medshow.NaturalDuration.TimeSpan;
+            // 重新設定影片播放滑桿
+            sliProgress.Minimum = 0;
+            sliProgress.Maximum = TimePosition.TotalMilliseconds; //最大值設定為影片的總毫秒數
+
+            // 設定計時器
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1); // 這個計時器設定每一個刻度為1秒
+            timer.Tick += new EventHandler(timer_tick); //每一個時間刻度設定一個小程序timer_tick
+            timer.Start(); // 啟動這個計時器
+        }
+
+       
+
+        private void timer_tick(object sender, EventArgs e)
+        {
+            // 小程序，更新目前影片播放進度
+            sliProgress.Value = medshow.Position.TotalMilliseconds;
+        }
+
+        private void sliProgress_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            int SliderValue = (int)sliProgress.Value; // 還記得轉型嗎？
+
+            TimeSpan ts = new TimeSpan(0, 0, 0, 0, SliderValue); //將滑桿的數值改變成時間間格的資料形式
+            medshow.Position = ts; // 調整影片播放進度到新的時間
         }
     }
 }

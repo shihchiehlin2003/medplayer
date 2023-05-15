@@ -15,11 +15,13 @@
         </Grid.Background>
         <Button x:Name="btnopenfile" Content="開啟檔案" HorizontalAlignment="Left" Margin="665,25,0,0" VerticalAlignment="Top" Height="30" Width="88" Click="Button_Click" Background="#FF51D476"/>
         <TextBox x:Name="txtfilepath" HorizontalAlignment="Left" Margin="52,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="30"/>
-        <MediaElement x:Name="medshow" HorizontalAlignment="Left" Height="287" Margin="52,76,0,0" VerticalAlignment="Top" Width="703"/>
-        <Button x:Name="btnplay" Content="播放" HorizontalAlignment="Left" Margin="52,376,0,0" VerticalAlignment="Top" Height="34" Width="73" Background="#FF18CAD1" Click="btnplay_Click"/>
-        <Button x:Name="btnpause" Content="暫停" HorizontalAlignment="Left" Margin="233,376,0,0" VerticalAlignment="Top" Height="34" Width="74" Background="#FFE6FC48" Click="btnpause_Click"/>
-        <Button x:Name="btnstop" Content="停止" HorizontalAlignment="Left" Margin="408,376,0,0" VerticalAlignment="Top" Height="36" Width="73" Background="#FFE32525" Click="btnstop_Click"/>
-        <Button x:Name="btnexit" Content="離開" HorizontalAlignment="Left" Margin="567,376,0,0" VerticalAlignment="Top" Height="36" Width="73" Background="#FF9E0000" Click="btnexit_Click"/>
+        <MediaElement x:Name="medshow" HorizontalAlignment="Left" Height="277" Margin="52,76,0,0" VerticalAlignment="Top" Width="703" MediaOpened="medshow_MediaOpened"/>
+        <Button x:Name="btnplay" Content="播放" HorizontalAlignment="Left" Margin="52,381,0,0" VerticalAlignment="Top" Height="34" Width="73" Background="#FF18CAD1" Click="btnplay_Click"/>
+        <Button x:Name="btnpause" Content="暫停" HorizontalAlignment="Left" Margin="200,381,0,0" VerticalAlignment="Top" Height="34" Width="74" Background="#FFE6FC48" Click="btnpause_Click" RenderTransformOrigin="0.511,0.14"/>
+        <Button x:Name="btnstop" Content="停止" HorizontalAlignment="Center" Margin="0,380,0,0" VerticalAlignment="Top" Height="36" Width="72" Background="#FFE32525" Click="btnstop_Click"/>
+        <Button x:Name="btnexit" Content="離開" HorizontalAlignment="Left" Margin="522,380,0,0" VerticalAlignment="Top" Height="36" Width="73" Background="#FF9E0000" Click="btnexit_Click" RenderTransformOrigin="0.501,1.088"/>
+        <Slider x:Name="sliVolume" HorizontalAlignment="Left" Margin="633,389,0,0" VerticalAlignment="Top" Width="120" ValueChanged="Slider_ValueChanged"/>
+        <Slider x:Name="sliProgress" HorizontalAlignment="Left" Margin="52,357,0,0" VerticalAlignment="Top" Width="701" PreviewMouseLeftButtonUp="sliProgress_PreviewMouseLeftButtonUp"/>
 
     </Grid>
 </Window>
