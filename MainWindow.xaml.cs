@@ -56,6 +56,7 @@ namespace medplayer
             }
         }
 
+
         private void btnplay_Click(object sender, RoutedEventArgs e)
         {
             // 設定影音播放狀態為「Play」，將狀態設定到目前的讀取行為
@@ -100,14 +101,17 @@ namespace medplayer
             timer.Interval = TimeSpan.FromSeconds(1); // 這個計時器設定每一個刻度為1秒
             timer.Tick += new EventHandler(timer_tick); //每一個時間刻度設定一個小程序timer_tick
             timer.Start(); // 啟動這個計時器
+            
         }
 
        
 
         private void timer_tick(object sender, EventArgs e)
         {
+            txtTime.Text = medshow.Position.ToString("h'h 'm'm 's's'");
             // 小程序，更新目前影片播放進度
             sliProgress.Value = medshow.Position.TotalMilliseconds;
+            
         }
 
         private void sliProgress_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -116,6 +120,12 @@ namespace medplayer
 
             TimeSpan ts = new TimeSpan(0, 0, 0, 0, SliderValue); //將滑桿的數值改變成時間間格的資料形式
             medshow.Position = ts; // 調整影片播放進度到新的時間
+            
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
     }
 }

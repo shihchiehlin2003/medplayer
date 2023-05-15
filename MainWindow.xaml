@@ -21,7 +21,8 @@
         <Button x:Name="btnstop" Content="停止" HorizontalAlignment="Center" Margin="0,380,0,0" VerticalAlignment="Top" Height="36" Width="72" Background="#FFE32525" Click="btnstop_Click"/>
         <Button x:Name="btnexit" Content="離開" HorizontalAlignment="Left" Margin="522,380,0,0" VerticalAlignment="Top" Height="36" Width="73" Background="#FF9E0000" Click="btnexit_Click" RenderTransformOrigin="0.501,1.088"/>
         <Slider x:Name="sliVolume" HorizontalAlignment="Left" Margin="633,389,0,0" VerticalAlignment="Top" Width="120" ValueChanged="Slider_ValueChanged"/>
-        <Slider x:Name="sliProgress" HorizontalAlignment="Left" Margin="52,357,0,0" VerticalAlignment="Top" Width="701" PreviewMouseLeftButtonUp="sliProgress_PreviewMouseLeftButtonUp"/>
+        <Slider x:Name="sliProgress" HorizontalAlignment="Left" Margin="52,357,0,0" VerticalAlignment="Top" Width="588" PreviewMouseLeftButtonUp="sliProgress_PreviewMouseLeftButtonUp"/>
+        <TextBox x:Name="txtTime" HorizontalAlignment="Left" Margin="640,357,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" Height="26" TextChanged="TextBox_TextChanged"/>
 
     </Grid>
 </Window>
