@@ -52,5 +52,10 @@ namespace medplayer
                 medshow.LoadedBehavior = MediaState.Play;
             }
         }
+
+        private void btnplay_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
